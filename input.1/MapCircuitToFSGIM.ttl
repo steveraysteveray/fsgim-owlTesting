@@ -1,0 +1,2533 @@
+# baseURI: http://input.1/MapCircuitToFSGIM
+# imports: file:///input.1/CircuitData.xlsx
+# imports: http://sgt.6/explanations
+# imports: http://sgt.6/tweaks
+# imports: http://topbraid.org/spin/spinmapl
+# prefix: MapCircuitToFSGIM
+
+@prefix MapCircuitToFSGIM: <http://input.1/MapCircuitToFSGIM#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix fsgim: <http://sgt.6/20160614#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spinmap: <http://spinrdf.org/spinmap#> .
+@prefix spinmapl: <http://topbraid.org/spin/spinmapl#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///input.1/CircuitData.xlsx#BidirectionalCombiner>
+  spinmap:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#RouterConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#RouterConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#RouterConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuit0URI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuit1URI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuit2URI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MB"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeBidirectional> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MD"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeDisconnected> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeInput> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MO"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeOutput> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0PS"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasPresentStateRef> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MB"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeBidirectional> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MD"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeDisconnected> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeInput> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MO"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeOutput> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1PS"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasPresentStateRef> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MB"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeBidirectional> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MD"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeDisconnected> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeInput> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MO"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeOutput> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2PS"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasPresentStateRef> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "routerName"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#bidirectionalCombinerName> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit0"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#bidirectionalCombinerConnectionPoint0> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit1"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#bidirectionalCombinerConnectionPoint1> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit2"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#bidirectionalCombinerConnectionPoint2> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#RouterConnectionPoint0" ;
+                sp:arg2 [
+                    sp:varName "routerName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new0"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#RouterConnectionPoint1" ;
+                sp:arg2 [
+                    sp:varName "routerName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#RouterConnectionPoint2" ;
+                sp:arg2 [
+                    sp:varName "routerName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new2"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuit0"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit0"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuit1"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuit2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit2"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "new0"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "new1"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "new2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuit0"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuit1"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuit2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MB"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MB> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MD"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MD> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MI"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MI> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MO"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MO> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0PS"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0PS> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MB"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MB> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MD"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MD> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MI"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MI> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MO"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MO> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1PS"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1PS> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MB"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MB> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MD"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MD> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MI"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MI> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MO"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MO> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2PS"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2PS> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MB"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MB"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MD"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MD"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MI"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MO"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MO"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MB"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MB"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MD"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MD"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MI"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MO"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MO"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MB"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MB"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MD"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MD"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MI"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MO"^^xsd:string ;
+                  ] ;
+                sp:arg2 xsd:true ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MO"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "This is a 0-3 rule that creates three ConnectionPoints for each BidirectionalCombiner, which is not possible with the templates provided."^^xsd:string ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:BidirectionalCombiner-BidirectionalCombiner ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#BidirectionalCombiner> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#Circuit>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:Circuit-Circuit ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#Circuit> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#CurtailableLoad>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:CurtailableLoad-ConnectionPoint ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:CurtailableLoad-CurtailableLoad ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/load_component---device_and_model_components#CurtailableLoad> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:CurtailableLoad-ConnectionPoint ;
+      spinmap:expression [
+          rdf:type spinmapl:buildURI ;
+          arg:template "fsgim:{?1}"^^xsd:string ;
+          sp:arg1 spin:_arg1 ;
+        ] ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#curtailableLoadInput> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#DispatchableGenerator>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:DispatchableGenerator-ConnectionPoint ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:DispatchableGenerator-DispatchableGenerator ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/generator_component---device_and_model_components#DispatchableGenerator> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:DispatchableGenerator-ConnectionPoint ;
+      spinmap:expression [
+          rdf:type spinmapl:buildURI ;
+          arg:template "fsgim:{?1}"^^xsd:string ;
+          sp:arg1 spin:_arg1 ;
+        ] ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#dispatchableGeneratorOutput> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#EM>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:EM-EM ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#EM> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:EM-EM ;
+      spinmap:expression [
+          rdf:type spinmapl:buildURI ;
+          arg:template "fsgim:{?1}"^^xsd:string ;
+          sp:arg1 spin:_arg1 ;
+        ] ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#hasEM> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasEMsRef> ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:EM-EM ;
+      spinmap:expression [
+          rdf:type spinmapl:buildURI ;
+          arg:template "fsgim:{?1}"^^xsd:string ;
+          sp:arg1 spin:_arg1 ;
+        ] ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#hasEnergyRouter> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasEnergyRouterRef> ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:EM-EM ;
+      spinmap:expression [
+          rdf:type spinmapl:buildURI ;
+          arg:template "fsgim:{?1}"^^xsd:string ;
+          sp:arg1 spin:_arg1 ;
+        ] ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#hasGenerator> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasGeneratorsRef> ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:EM-EM ;
+      spinmap:expression [
+          rdf:type spinmapl:buildURI ;
+          arg:template "fsgim:{?1}"^^xsd:string ;
+          sp:arg1 spin:_arg1 ;
+        ] ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#hasLoad> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasLoadsRef> ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:EM-EM ;
+      spinmap:expression [
+          rdf:type spinmapl:buildURI ;
+          arg:template "fsgim:{?1}"^^xsd:string ;
+          sp:arg1 spin:_arg1 ;
+        ] ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#hasMeter> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasMetersRef> ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#ElectricMeter>
+  spinmap:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newInURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newOutURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuitInURI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "newInURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuitOutURI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "newOutURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "meterName"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#electricMeterName> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuitIn"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#electricMeterInput> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuitOut"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#electricMeterOutput> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#InputConnectionPoint" ;
+                sp:arg2 [
+                    sp:varName "meterName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newInput"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#OutputConnectionPoint" ;
+                sp:arg2 [
+                    sp:varName "meterName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newOutput"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuitIn"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuitIn"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuitOut"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuitOut"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newInput"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newInURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newOutput"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newOutURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuitIn"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuitInURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuitOut"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuitOutURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "This is a 0-2 rule that creates two ConnectionPoints (input and output) for each ElectricMeter, which is not possible with the templates provided."^^xsd:string ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:ElectricMeter-ElectricMeter ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/meter_component---device_and_model_components#ElectricMeter> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#Generator>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:Generator-ConnectionPoint ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:Generator-Generator ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/generator_component---device_and_model_components#Generator> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:Generator-ConnectionPoint ;
+      spinmap:expression [
+          rdf:type spinmapl:buildURI ;
+          arg:template "fsgim:{?1}"^^xsd:string ;
+          sp:arg1 spin:_arg1 ;
+        ] ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#generatorOutput> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:Generator-Generator ;
+      spinmap:expression spin:_arg1 ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#hasGeneratorStorage> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/generator_component---device_and_model_components#hasStorageRef> ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#GridCircuit>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:GridCircuit-GridCircuit ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#GridCircuit> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#Load>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:Load-ConnectionPoint ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:Load-Load ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/load_component---device_and_model_components#Load> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:Load-ConnectionPoint ;
+      spinmap:expression [
+          rdf:type spinmapl:buildURI ;
+          arg:template "fsgim:{?1}"^^xsd:string ;
+          sp:arg1 spin:_arg1 ;
+        ] ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#loadInput> ;
+      spinmap:targetPredicate1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#TestCase>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:TestCase-Dashboard ;
+      spinmap:expression <http://sgt.6/explanations#Dashboard> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:TestCase-Dashboard ;
+      spinmap:expression spin:_arg1 ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#testCaseName> ;
+      spinmap:targetPredicate1 <http://sgt.6/explanations#testCaseName> ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapCircuitToFSGIM:TestCase-Dashboard ;
+      spinmap:expression spin:_arg1 ;
+      spinmap:sourcePredicate1 <file:///input.1/CircuitData.xlsx#testCaseVersion> ;
+      spinmap:targetPredicate1 <http://sgt.6/explanations#testCaseVersion> ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#TransferSwitch>
+  spinmap:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#RouterConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#RouterConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#RouterConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuit0URI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuit1URI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuit2URI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MB"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeBidirectional> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MD"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeDisconnected> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeInput> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MO"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeOutput> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0PS"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasPresentStateRef> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MB"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeBidirectional> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MD"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeDisconnected> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeInput> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MO"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeOutput> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1PS"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasPresentStateRef> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MB"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeBidirectional> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MD"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeDisconnected> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeInput> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MO"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeOutput> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2PS"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasPresentStateRef> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "routerName"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#transferSwitchName> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit0"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#transferSwitchConnectionPoint0> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit1"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#transferSwitchConnectionPoint1> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit2"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#transferSwitchConnectionPoint2> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#RouterConnectionPoint0" ;
+                sp:arg2 [
+                    sp:varName "routerName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new0"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#RouterConnectionPoint1" ;
+                sp:arg2 [
+                    sp:varName "routerName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#RouterConnectionPoint2" ;
+                sp:arg2 [
+                    sp:varName "routerName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new2"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuit0"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit0"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuit1"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuit2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit2"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "new0"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "new1"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "new2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuit0"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuit1"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuit2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MB"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MB> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MD"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MD> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MI"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MI> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MO"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MO> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0PS"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0PS> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MB"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MB> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MD"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MD> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MI"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MI> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MO"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MO> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1PS"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1PS> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MB"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MB> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MD"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MD> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MI"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MI> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MO"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MO> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2PS"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2PS> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MB"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MB"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MD"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MD"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MI"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MO"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MO"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MB"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MB"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MD"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MD"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MI"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MO"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MO"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MB"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MB"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MD"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MD"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MI"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MO"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 <http://www.w3.org/2001/XMLSchema#:false> ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MO"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "This is a 0-3 rule that creates three ConnectionPoints for each TransferSwitch, which is not possible with the templates provided."^^xsd:string ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:TransferSwitch-TransferSwitch ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#TransferSwitch> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+.
+<file:///input.1/CircuitData.xlsx#UnidirectionalCombiner>
+  spinmap:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#RouterConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#RouterConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#RouterConnectionPoint> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuit0URI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuit1URI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newCircuit2URI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MB"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeBidirectional> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MD"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeDisconnected> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeInput> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP0MO"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeOutput> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0PS"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasPresentStateRef> ;
+            sp:subject [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MB"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeBidirectional> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MD"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeDisconnected> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeInput> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP1MO"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeOutput> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1PS"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasPresentStateRef> ;
+            sp:subject [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MB"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeBidirectional> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MD"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeDisconnected> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MI"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeInput> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newuRCP2MO"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasMayBeOutput> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2PS"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#hasPresentStateRef> ;
+            sp:subject [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "routerName"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#unidirectionalCombinerName> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit0"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#unidirectionalCombinerConnectionPoint0> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit1"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#unidirectionalCombinerConnectionPoint1> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit2"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#unidirectionalCombinerConnectionPoint2> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#RouterConnectionPoint0" ;
+                sp:arg2 [
+                    sp:varName "routerName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new0"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#RouterConnectionPoint1" ;
+                sp:arg2 [
+                    sp:varName "routerName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#RouterConnectionPoint2" ;
+                sp:arg2 [
+                    sp:varName "routerName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new2"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuit0"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit0"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuit1"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#" ;
+                sp:arg2 [
+                    sp:varName "circuit2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit2"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "new0"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "new1"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "new2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "new2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuit0"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit0URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuit1"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit1URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newCircuit2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newCircuit2URI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MB"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MB> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MD"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MD> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MI"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MI> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0MO"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0MO> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP0PS"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP0PS> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MB"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MB> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MD"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MD> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MI"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MI> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1MO"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1MO> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP1PS"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP1PS> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MB"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MB> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MD"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MD> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MI"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MI> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2MO"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2MO> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "uRCP2PS"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/CircuitData.xlsx#uRCP2PS> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MB"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MB"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MD"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MD"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MI"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP0MO"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP0MO"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MB"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MB"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MD"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MD"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MI"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP1MO"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP1MO"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MB"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MB"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MD"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MD"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MI"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    sp:varName "uRCP2MO"^^xsd:string ;
+                  ] ;
+                sp:arg2 <http://www.w3.org/2001/XMLSchema#:true> ;
+                sp:arg3 xsd:false ;
+              ] ;
+            sp:variable [
+                sp:varName "newuRCP2MO"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "This is a 0-3 rule that creates three ConnectionPoints for each UnidirectionalCombiner, which is not possible with the templates provided."^^xsd:string ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapCircuitToFSGIM:UnidirectionalCombiner-UnidirectionalCombiner ;
+      spinmap:expression <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#UnidirectionalCombiner> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+.
+<http://input.1/MapCircuitToFSGIM>
+  rdf:type owl:Ontology ;
+  owl:imports <file:///input.1/CircuitData.xlsx> ;
+  owl:imports <http://sgt.6/explanations> ;
+  owl:imports <http://sgt.6/tweaks> ;
+  owl:imports <http://topbraid.org/spin/spinmapl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+MapCircuitToFSGIM:BidirectionalCombiner-BidirectionalCombiner
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#BidirectionalCombiner> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#bidirectionalCombinerName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#BidirectionalCombiner> ;
+.
+MapCircuitToFSGIM:Circuit-Circuit
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#Circuit> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#circuitName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#Circuit> ;
+.
+MapCircuitToFSGIM:CurtailableLoad-ConnectionPoint
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#CurtailableLoad> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#curtailableLoadName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:ConnectionPoint{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+.
+MapCircuitToFSGIM:CurtailableLoad-CurtailableLoad
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#CurtailableLoad> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#curtailableLoadName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/load_component---device_and_model_components#CurtailableLoad> ;
+.
+MapCircuitToFSGIM:DispatchableGenerator-ConnectionPoint
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#DispatchableGenerator> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#dispatchableGeneratorName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:ConnectionPoint{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+.
+MapCircuitToFSGIM:DispatchableGenerator-DispatchableGenerator
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#DispatchableGenerator> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#dispatchableGeneratorName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/generator_component---device_and_model_components#DispatchableGenerator> ;
+.
+MapCircuitToFSGIM:EM-EM
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#EM> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#eMName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#EM> ;
+.
+MapCircuitToFSGIM:ElectricMeter-ElectricMeter
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#ElectricMeter> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#electricMeterName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/meter_component---device_and_model_components#ElectricMeter> ;
+.
+MapCircuitToFSGIM:Generator-ConnectionPoint
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#Generator> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#generatorName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:ConnectionPoint{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+.
+MapCircuitToFSGIM:Generator-Generator
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#Generator> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#generatorName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/generator_component---device_and_model_components#Generator> ;
+.
+MapCircuitToFSGIM:GridCircuit-GridCircuit
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#GridCircuit> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#gridCircuitName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#GridCircuit> ;
+.
+MapCircuitToFSGIM:Load-ConnectionPoint
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#Load> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#loadName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:ConnectionPoint{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#ConnectionPoint> ;
+.
+MapCircuitToFSGIM:Load-Load
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#Load> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#loadName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/load_component---device_and_model_components#Load> ;
+.
+MapCircuitToFSGIM:TestCase-Dashboard
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#TestCase> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#testCaseName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "explain:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://sgt.6/explanations#Dashboard> ;
+.
+MapCircuitToFSGIM:TransferSwitch-TransferSwitch
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#TransferSwitch> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#transferSwitchName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#TransferSwitch> ;
+.
+MapCircuitToFSGIM:UnidirectionalCombiner-UnidirectionalCombiner
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/CircuitData.xlsx#UnidirectionalCombiner> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <file:///input.1/CircuitData.xlsx#unidirectionalCombinerName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "fsgim:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#UnidirectionalCombiner> ;
+.

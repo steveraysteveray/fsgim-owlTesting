@@ -1,0 +1,245 @@
+# baseURI: http://input.1/MapPowerToFSGIM
+# imports: file:///input.1/PowerData.xlsx
+# imports: http://sgt.6/explanations
+# imports: http://sgt.6/tweaks
+# imports: http://topbraid.org/spin/spinmapl
+# prefix: MapPowerToFSGIM
+
+@prefix MapPowerToFSGIM: <http://input.1/MapPowerToFSGIM#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix fsgim: <http://sgt.6/20160614#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spinmap: <http://spinrdf.org/spinmap#> .
+@prefix spinmapl: <http://topbraid.org/spin/spinmapl#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///input.1/PowerData.xlsx#ComponentElement>
+  spinmap:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "freal"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasValue> ;
+            sp:subject [
+                sp:varName "reallabel"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "frealu"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasUncertainty> ;
+            sp:subject [
+                sp:varName "reallabel"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "freactive"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasValue> ;
+            sp:subject [
+                sp:varName "reactivelabel"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "freactiveu"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasUncertainty> ;
+            sp:subject [
+                sp:varName "reactivelabel"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "name"^^xsd:string ;
+              ] ;
+            sp:predicate <file:///input.1/PowerData.xlsx#componentElementName> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "real"^^xsd:string ;
+                    ] ;
+                  sp:predicate <file:///input.1/PowerData.xlsx#real> ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  rdf:type sp:Bind ;
+                  sp:expression [
+                      rdf:type xsd:float ;
+                      sp:arg1 [
+                          sp:varName "real"^^xsd:string ;
+                        ] ;
+                    ] ;
+                  sp:variable [
+                      sp:varName "freal"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "realu"^^xsd:string ;
+                    ] ;
+                  sp:predicate <file:///input.1/PowerData.xlsx#realUncertainty> ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  rdf:type sp:Bind ;
+                  sp:expression [
+                      rdf:type xsd:float ;
+                      sp:arg1 [
+                          sp:varName "realu"^^xsd:string ;
+                        ] ;
+                    ] ;
+                  sp:variable [
+                      sp:varName "frealu"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "reactive"^^xsd:string ;
+                    ] ;
+                  sp:predicate <file:///input.1/PowerData.xlsx#reactive> ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  rdf:type sp:Bind ;
+                  sp:expression [
+                      rdf:type xsd:float ;
+                      sp:arg1 [
+                          sp:varName "reactive"^^xsd:string ;
+                        ] ;
+                    ] ;
+                  sp:variable [
+                      sp:varName "freactive"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "reactiveu"^^xsd:string ;
+                    ] ;
+                  sp:predicate <file:///input.1/PowerData.xlsx#reactiveUncertainty> ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  rdf:type sp:Bind ;
+                  sp:expression [
+                      rdf:type xsd:float ;
+                      sp:arg1 [
+                          sp:varName "reactiveu"^^xsd:string ;
+                        ] ;
+                    ] ;
+                  sp:variable [
+                      sp:varName "freactiveu"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    rdf:type fn:concat ;
+                    sp:arg1 "fsgim:PowerRealQuantity" ;
+                    sp:arg2 [
+                        sp:varName "name"^^xsd:string ;
+                      ] ;
+                    sp:arg3 "Actual" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reallabel"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    rdf:type fn:concat ;
+                    sp:arg1 "fsgim:PowerReactiveQuantity" ;
+                    sp:arg2 [
+                        sp:varName "name"^^xsd:string ;
+                      ] ;
+                    sp:arg3 "Actual" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactivelabel"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+.
+<file:///input.1/PowerData.xlsx#TestCase>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context MapPowerToFSGIM:TestCase-Dashboard ;
+      spinmap:expression <http://sgt.6/explanations#Dashboard> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapPowerToFSGIM:TestCase-Dashboard ;
+      spinmap:expression spin:_arg1 ;
+      spinmap:sourcePredicate1 <file:///input.1/PowerData.xlsx#testCaseName> ;
+      spinmap:targetPredicate1 <http://sgt.6/explanations#testCaseName> ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context MapPowerToFSGIM:TestCase-Dashboard ;
+      spinmap:expression spin:_arg1 ;
+      spinmap:sourcePredicate1 <file:///input.1/PowerData.xlsx#testCaseVersion> ;
+      spinmap:targetPredicate1 <http://sgt.6/explanations#testCaseVersion> ;
+    ] ;
+.
+<http://input.1/MapPowerToFSGIM>
+  rdf:type owl:Ontology ;
+  owl:imports <file:///input.1/PowerData.xlsx> ;
+  owl:imports <http://sgt.6/explanations> ;
+  owl:imports <http://sgt.6/tweaks> ;
+  owl:imports <http://topbraid.org/spin/spinmapl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+MapPowerToFSGIM:TestCase-Dashboard
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <file:///input.1/PowerData.xlsx#TestCase> ;
+  spinmap:target [
+      rdf:type spinmapl:buildURI1 ;
+      sp:arg1 <http://sgt.6/explanations#testCaseName> ;
+      spinmap:source spinmap:_source ;
+      spinmapl:template "explain:{?1}"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://sgt.6/explanations#Dashboard> ;
+.

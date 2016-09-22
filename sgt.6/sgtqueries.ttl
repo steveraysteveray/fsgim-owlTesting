@@ -1,0 +1,509 @@
+# baseURI: http://sgt.6/sgtqueries
+# imports: http://sgt.6/initializer
+# imports: http://spinrdf.org/spl
+# prefix: sgtqueries
+
+@prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sgtqueries: <http://sgt.6/sgtqueries#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://sgt.6/sgtqueries>
+  rdf:type owl:Ontology ;
+  owl:imports <http://sgt.6/initializer> ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+sgtqueries:queries
+  rdf:type owl:Class ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:distinct "true"^^xsd:boolean ;
+      sp:orderBy (
+          [
+            sp:varName "typeLabel"^^xsd:string ;
+          ]
+        ) ;
+      sp:resultVariables (
+          [
+            sp:varName "entity"^^xsd:string ;
+          ]
+          [
+            sp:varName "typeLabel"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:TriplePath ;
+            sp:object owl:Thing ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 rdf:type ;
+                sp:path2 [
+                    rdf:type sp:ModPath ;
+                    sp:modMax -2 ;
+                    sp:modMin 0 ;
+                    sp:subPath rdfs:subClassOf ;
+                  ] ;
+              ] ;
+            sp:subject [
+                sp:varName "entity"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type fn:starts-with ;
+                sp:arg1 [
+                    rdf:type afn:namespace ;
+                    sp:arg1 [
+                        sp:varName "entity"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg2 "http://sgt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "type"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "entity"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "typeLabel"^^xsd:string ;
+                    ] ;
+                  sp:predicate rdfs:label ;
+                  sp:subject [
+                      sp:varName "type"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "002 List all defined instances"^^xsd:string ;
+    ] ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:orderBy (
+          [
+            sp:varName "onClass"^^xsd:string ;
+          ]
+        ) ;
+      sp:resultVariables (
+          [
+            sp:varName "onClass"^^xsd:string ;
+          ]
+          [
+            sp:varName "newClass"^^xsd:string ;
+          ]
+          [
+            sp:varName "comment"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sp:Construct ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "rule"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "comment"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:comment ;
+            sp:subject [
+                sp:varName "rule"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Union ;
+            sp:elements (
+                (
+                  [
+                    sp:object [
+                        sp:varName "rule"^^xsd:string ;
+                      ] ;
+                    sp:predicate spin:ruleWave1 ;
+                    sp:subject [
+                        sp:varName "onClass"^^xsd:string ;
+                      ] ;
+                  ]
+                )
+                (
+                  [
+                    sp:object [
+                        sp:varName "rule"^^xsd:string ;
+                      ] ;
+                    sp:predicate spin:ruleWave2 ;
+                    sp:subject [
+                        sp:varName "onClass"^^xsd:string ;
+                      ] ;
+                  ]
+                )
+                (
+                  [
+                    sp:object [
+                        sp:varName "rule"^^xsd:string ;
+                      ] ;
+                    sp:predicate spin:rule ;
+                    sp:subject [
+                        sp:varName "onClass"^^xsd:string ;
+                      ] ;
+                  ]
+                )
+              ) ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "bnode1"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 sp:templates ;
+                sp:path2 rdf:first ;
+              ] ;
+            sp:subject [
+                sp:varName "rule"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object rdf:type ;
+            sp:predicate sp:predicate ;
+            sp:subject [
+                sp:varName "bnode1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newClass"^^xsd:string ;
+              ] ;
+            sp:predicate sp:object ;
+            sp:subject [
+                sp:varName "bnode1"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "004 List all the rules defined and the classes that get created"^^xsd:string ;
+    ] ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:orderBy (
+          [
+            sp:varName "type"^^xsd:string ;
+          ]
+        ) ;
+      sp:resultVariables (
+          [
+            sp:varName "ComponentElement"^^xsd:string ;
+          ]
+          [
+            sp:varName "Classname"^^xsd:string ;
+          ]
+          [
+            sp:varName "NameType"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:TriplePath ;
+            sp:object <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#ComponentElement> ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 rdf:type ;
+                sp:path2 [
+                    rdf:type sp:ModPath ;
+                    sp:modMax -2 ;
+                    sp:modMin 0 ;
+                    sp:subPath rdfs:subClassOf ;
+                  ] ;
+              ] ;
+            sp:subject [
+                sp:varName "ComponentElement"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "NameType"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#hasNameType> ;
+            sp:subject [
+                sp:varName "ComponentElement"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "type"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ComponentElement"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:localname ;
+                sp:arg1 [
+                    sp:varName "type"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "Classname"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "006 List all ComponentElements"^^xsd:string ;
+    ] ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:expression [
+                rdf:type sp:Count ;
+                sp:expression [
+                    sp:varName "comment"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:varName "count"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sp:Construct ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "rule"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "comment"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:comment ;
+            sp:subject [
+                sp:varName "rule"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Union ;
+            sp:elements (
+                (
+                  [
+                    sp:object [
+                        sp:varName "rule"^^xsd:string ;
+                      ] ;
+                    sp:predicate spin:ruleWave1 ;
+                    sp:subject [
+                        sp:varName "onClass"^^xsd:string ;
+                      ] ;
+                  ]
+                )
+                (
+                  [
+                    sp:object [
+                        sp:varName "rule"^^xsd:string ;
+                      ] ;
+                    sp:predicate spin:ruleWave2 ;
+                    sp:subject [
+                        sp:varName "onClass"^^xsd:string ;
+                      ] ;
+                  ]
+                )
+                (
+                  [
+                    sp:object [
+                        sp:varName "rule"^^xsd:string ;
+                      ] ;
+                    sp:predicate spin:rule ;
+                    sp:subject [
+                        sp:varName "onClass"^^xsd:string ;
+                      ] ;
+                  ]
+                )
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "005 Count all the rules defined"^^xsd:string ;
+    ] ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "onClass"^^xsd:string ;
+          ]
+          [
+            sp:varName "comment"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sp:Construct ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "rule"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "comment"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:comment ;
+            sp:subject [
+                sp:varName "rule"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Union ;
+            sp:elements (
+                (
+                  [
+                    sp:object [
+                        sp:varName "rule"^^xsd:string ;
+                      ] ;
+                    sp:predicate spin:ruleWave1 ;
+                    sp:subject [
+                        sp:varName "onClass"^^xsd:string ;
+                      ] ;
+                  ]
+                )
+                (
+                  [
+                    sp:object [
+                        sp:varName "rule"^^xsd:string ;
+                      ] ;
+                    sp:predicate spin:ruleWave2 ;
+                    sp:subject [
+                        sp:varName "onClass"^^xsd:string ;
+                      ] ;
+                  ]
+                )
+                (
+                  [
+                    sp:object [
+                        sp:varName "rule"^^xsd:string ;
+                      ] ;
+                    sp:predicate spin:rule ;
+                    sp:subject [
+                        sp:varName "onClass"^^xsd:string ;
+                      ] ;
+                  ]
+                )
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "003 List all the rules defined"^^xsd:string ;
+    ] ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:where (
+          [
+            sp:object <http://sgt.6/explanations#AggregateDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "aggregation"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "EM"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://sgt.6/explanations#supportsComponentElement> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#hasName> ;
+              ] ;
+            sp:subject [
+                sp:varName "aggregation"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://sgt.6/explanations#hasCircuit> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#hasName> ;
+              ] ;
+            sp:subject [
+                sp:varName "aggregation"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realDemand"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "aggregation"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "aggregation"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveDemand"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "aggregation"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "aggregation"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "apparentDemand"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedApparentDemandAggregation> ;
+            sp:subject [
+                sp:varName "aggregation"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "apparentUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedApparentDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "aggregation"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "001 Summarize all aggregations"^^xsd:string ;
+    ] ;
+  rdfs:subClassOf owl:Thing ;
+.

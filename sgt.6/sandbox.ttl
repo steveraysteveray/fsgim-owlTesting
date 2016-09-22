@@ -1,0 +1,43 @@
+# baseURI: http://sgt.6/sandbox
+# imports: http://sgt.6/20160614/component-collection-all
+# imports: http://sgt.6/defaults
+# imports: http://sgt.6/explanations
+# imports: http://sgt.6/initializer
+# imports: http://sgt.6/sgtqueries
+# imports: http://sgt.6/tweaks
+# imports: http://topbraid.org/spin/spinowl
+# prefix: sandbox
+
+@prefix collections_rulesets_and_aggregations---energy_manager_component: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/collections_rulesets_and_aggregations---energy_manager_component#> .
+@prefix device---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#> .
+@prefix eiclasses---energy_interoperation_wd36_pr03: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/eiclasses---energy_interoperation_wd36_pr03#> .
+@prefix energy_manager_component---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#> .
+@prefix energyrouter---energy_manager_component: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energyrouter---energy_manager_component#> .
+@prefix fsgim: <http://sgt.6/20160614#> .
+@prefix generator_component---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/generator_component---device_and_model_components#> .
+@prefix key_energy_manager_concepts---energy_manager_component: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#> .
+@prefix load_component---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/load_component---device_and_model_components#> .
+@prefix measurements---common_primitive_types_classes_and_enumerations: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#> .
+@prefix meter_component---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/meter_component---device_and_model_components#> .
+@prefix naesb_pap10_eui---iec_cim_naesb_eui_model_20101111update_20120802: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/naesb_pap10_eui---iec_cim_naesb_eui_model_20101111update_20120802#> .
+@prefix other_common_classes---common_primitive_types_classes_and_enumerations: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix power_measurements---measurements: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sandbox: <http://sgt.6/sandbox#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix standard_aggregations---collections_rulesets_and_aggregations: <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/standard_aggregations---collections_rulesets_and_aggregations#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://sgt.6/sandbox>
+  rdf:type owl:Ontology ;
+  owl:imports <http://sgt.6/20160614/component-collection-all> ;
+  owl:imports <http://sgt.6/defaults> ;
+  owl:imports <http://sgt.6/explanations> ;
+  owl:imports <http://sgt.6/initializer> ;
+  owl:imports <http://sgt.6/sgtqueries> ;
+  owl:imports <http://sgt.6/tweaks> ;
+  owl:imports <http://topbraid.org/spin/spinowl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.

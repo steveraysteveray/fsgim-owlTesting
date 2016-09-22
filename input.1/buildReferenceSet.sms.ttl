@@ -1,0 +1,410 @@
+# baseURI: http://input.1/buildReferenceSet
+# imports: http://sgt.6/rules
+# imports: http://topbraid.org/sparqlmotionfunctions
+# imports: http://topbraid.org/sparqlmotionlib-tbc
+# prefix: ref
+
+@prefix CircuitData: <file:///input.1/CircuitData.xlsx#> .
+@prefix MapCircuitToFSGIM: <http://input.1/MapCircuitToFSGIM#> .
+@prefix MapPowerToFSGIM: <http://input.1/MapPowerToFSGIM#> .
+@prefix PowerData: <file:///input.1/PowerData.xlsx#> .
+@prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix avwx---wxxm: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/avwx---wxxm#> .
+@prefix avwx_areaofinterestwx---avwx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/avwx_areaofinterestwx---avwx#> .
+@prefix avwx_datatypes---avwx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/avwx_datatypes---avwx#> .
+@prefix avwx_features---avwx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/avwx_features---avwx#> .
+@prefix avwx_measures---avwx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/avwx_measures---avwx#> .
+@prefix avwx_phenom_hazards---avwx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/avwx_phenom_hazards---avwx#> .
+@prefix avwx_phenom_tropicalcyclone---avwx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/avwx_phenom_tropicalcyclone---avwx#> .
+@prefix avwx_phenom_volcanic---avwx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/avwx_phenom_volcanic---avwx#> .
+@prefix avwx_phenom_wind---avwx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/avwx_phenom_wind---avwx#> .
+@prefix basicdas---iec61850_7_2: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/basicdas---iec61850_7_2#> .
+@prefix cdcanalogueinfo---commondataclasses: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/cdcanalogueinfo---commondataclasses#> .
+@prefix cdcanalogueset---commondataclasses: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/cdcanalogueset---commondataclasses#> .
+@prefix cdccontrol---commondataclasses: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/cdccontrol---commondataclasses#> .
+@prefix cdcdescription---commondataclasses: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/cdcdescription---commondataclasses#> .
+@prefix cdcstatusinfo---commondataclasses: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/cdcstatusinfo---commondataclasses#> .
+@prefix cdcstatusset---commondataclasses: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/cdcstatusset---commondataclasses#> .
+@prefix citation_and_responsible_party_information---iso_19115_metadata: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/citation_and_responsible_party_information---iso_19115_metadata#> .
+@prefix cmof: <http://uml.topquadrant.com/owl/cmof/osg/cmof#> .
+@prefix collections_rulesets_and_aggregations---energy_manager_component: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/collections_rulesets_and_aggregations---energy_manager_component#> .
+@prefix common_primitive_types_classes_and_enumerations---model: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/common_primitive_types_classes_and_enumerations---model#> .
+@prefix commondataclasses---iec61850_7_3: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/commondataclasses---iec61850_7_3#> .
+@prefix commondataclasses---iec61850_7_420: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/commondataclasses---iec61850_7_420#> .
+@prefix commonusagepackages---wxxm: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/commonusagepackages---wxxm#> .
+@prefix component-collection: <http://uml.topquadrant.com/testsuite/owl/fsgim.release1/submodels/component-collection#> .
+@prefix constraints: <http://sgt.6/constraints#> .
+@prefix constructeddas---iec61850_7_3: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/constructeddas---iec61850_7_3#> .
+@prefix coordinate_geometry---_geometry: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/coordinate_geometry---_geometry#> .
+@prefix coordinate_reference_systems---iso_19111_spatial_referencing_by_coordinates: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/coordinate_reference_systems---iso_19111_spatial_referencing_by_coordinates#> .
+@prefix coretypes---iec61850_7_2: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/coretypes---iec61850_7_2#> .
+@prefix cultural_and_linguistic_adapdability---iso_19139_metadata: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/cultural_and_linguistic_adapdability---iso_19139_metadata#> .
+@prefix daenums---iec61850_7_3: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/daenums---iec61850_7_3#> .
+@prefix daenums---iec61850_7_420: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/daenums---iec61850_7_420#> .
+@prefix data_quality_information---iso_19115_metadata: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/data_quality_information---iso_19115_metadata#> .
+@prefix defaults: <http://sgt.6/defaults#> .
+@prefix derivedcdcs---iec61850_7_4: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/derivedcdcs---iec61850_7_4#> .
+@prefix device---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/device---device_and_model_components#> .
+@prefix eiclasses---energy_interoperation_wd36_pr03: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/eiclasses---energy_interoperation_wd36_pr03#> .
+@prefix emissions_measurements---measurements: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/emissions_measurements---measurements#> .
+@prefix emix---emix_pr04: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/emix---emix_pr04#> .
+@prefix emix-terms---emix_pr04: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/emix-terms---emix_pr04#> .
+@prefix emix-warrants---emix_pr04: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/emix-warrants---emix_pr04#> .
+@prefix emix_pr04---oasis: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/emix_pr04---oasis#> .
+@prefix energy_interoperation_wd36_pr03---oasis: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/energy_interoperation_wd36_pr03---oasis#> .
+@prefix energy_manager_component---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/energy_manager_component---device_and_model_components#> .
+@prefix energy_measurements---measurements: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/energy_measurements---measurements#> .
+@prefix energyrouter---energy_manager_component: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/energyrouter---energy_manager_component#> .
+@prefix enumerations---common_primitive_types_classes_and_enumerations: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/enumerations---common_primitive_types_classes_and_enumerations#> .
+@prefix explain: <http://sgt.6/explanations#> .
+@prefix extent_information---iso_19115_metadata: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/extent_information---iso_19115_metadata#> .
+@prefix fsgim: <http://sgt.6/20160614#> .
+@prefix fsgimweather---energy_manager_component: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/fsgimweather---energy_manager_component#> .
+@prefix generator_component---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/generator_component---device_and_model_components#> .
+@prefix geometry---iso_19107_spatial_schema: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/geometry---iso_19107_spatial_schema#> .
+@prefix icao_annex_3_base---avwx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/icao_annex_3_base---avwx#> .
+@prefix identification_information---iso_19115_metadata: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/identification_information---iso_19115_metadata#> .
+@prefix iec61850---model_elements_from_external_sources: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iec61850---model_elements_from_external_sources#> .
+@prefix iec61850_7_2---iec61850: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iec61850_7_2---iec61850#> .
+@prefix iec61850_7_3---iec61850: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iec61850_7_3---iec61850#> .
+@prefix iec61850_7_4---iec61850: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iec61850_7_4---iec61850#> .
+@prefix iec61850_7_420---iec61850: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iec61850_7_420---iec61850#> .
+@prefix iec_cim_naesb_eui_model_20101111update_20120802---model_elements_from_external_sources: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iec_cim_naesb_eui_model_20101111update_20120802---model_elements_from_external_sources#> .
+@prefix initializer: <http://sgt.6/initializer#> .
+@prefix iso_00639_human_language---iso_standard_packages: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iso_00639_human_language---iso_standard_packages#> .
+@prefix iso_03166_country_codes---iso_standard_packages: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iso_03166_country_codes---iso_standard_packages#> .
+@prefix iso_19107_spatial_schema---iso_standard_packages: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iso_19107_spatial_schema---iso_standard_packages#> .
+@prefix iso_19111_spatial_referencing_by_coordinates---iso_standard_packages: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iso_19111_spatial_referencing_by_coordinates---iso_standard_packages#> .
+@prefix iso_19115_metadata---iso_standard_packages: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iso_19115_metadata---iso_standard_packages#> .
+@prefix iso_19139_metadata---iso_standard_packages: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iso_19139_metadata---iso_standard_packages#> .
+@prefix iso_standard_packages---wxxm: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/iso_standard_packages---wxxm#> .
+@prefix key_energy_manager_concepts---energy_manager_component: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/key_energy_manager_concepts---energy_manager_component#> .
+@prefix lngroupf---logicalnodes: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/lngroupf---logicalnodes#> .
+@prefix lngroupl---logicalnodes: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/lngroupl---logicalnodes#> .
+@prefix lngroupm---logicalnodes: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/lngroupm---logicalnodes#> .
+@prefix load_component---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/load_component---device_and_model_components#> .
+@prefix logicalnodeenums---iec61850_7_4: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/logicalnodeenums---iec61850_7_4#> .
+@prefix logicalnodes---iec61850_7_4: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/logicalnodes---iec61850_7_4#> .
+@prefix logicalnodes---iec61850_7_420: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/logicalnodes---iec61850_7_420#> .
+@prefix maintenance_information---iso_19115_metadata: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/maintenance_information---iso_19115_metadata#> .
+@prefix measurements---common_primitive_types_classes_and_enumerations: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/measurements---common_primitive_types_classes_and_enumerations#> .
+@prefix measurements_under_consideration---under_consideration: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/measurements_under_consideration---under_consideration#> .
+@prefix measures---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/measures---wx#> .
+@prefix metadata_entity_set_information---iso_19115_metadata: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/metadata_entity_set_information---iso_19115_metadata#> .
+@prefix metamodel---iec61850_7_2: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/metamodel---iec61850_7_2#> .
+@prefix meter_component---device_and_model_components: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/meter_component---device_and_model_components#> .
+@prefix model_elements_from_external_sources---model: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/model_elements_from_external_sources---model#> .
+@prefix naesb_pap10_eui---iec_cim_naesb_eui_model_20101111update_20120802: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/naesb_pap10_eui---iec_cim_naesb_eui_model_20101111update_20120802#> .
+@prefix oasis---model_elements_from_external_sources: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/oasis---model_elements_from_external_sources#> .
+@prefix objectreferences---iec61850_7_2: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/objectreferences---iec61850_7_2#> .
+@prefix observation---om1_observation: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/observation---om1_observation#> .
+@prefix om1_observation---swe: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/om1_observation---swe#> .
+@prefix om2_sampling---swe: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/om2_sampling---swe#> .
+@prefix other_common_classes---common_primitive_types_classes_and_enumerations: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#> .
+@prefix ouml: <http://uml.topquadrant.com/owl/uml/osg/uml#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix power---emix_pr04: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/power---emix_pr04#> .
+@prefix power-quality---emix_pr04: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/power-quality---emix_pr04#> .
+@prefix power_measurements---measurements: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/power_measurements---measurements#> .
+@prefix primitive_data_types---common_primitive_types_classes_and_enumerations: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/primitive_data_types---common_primitive_types_classes_and_enumerations#> .
+@prefix process---sensorml: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/process---sensorml#> .
+@prefix queries: <http://uml.linkedmodels.org/sg/schema/fsgim/queries#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ref: <http://input.1/buildReferenceSet#> .
+@prefix reference_system_information---iso_19115_metadata: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/reference_system_information---iso_19115_metadata#> .
+@prefix resource---emix_pr04: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/resource---emix_pr04#> .
+@prefix rules: <http://sgt.6/rules#> .
+@prefix samplingbase---om2_sampling: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/samplingbase---om2_sampling#> .
+@prefix sandbox: <http://sgt.6/sandbox#> .
+@prefix sensorml---swe: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/sensorml---swe#> .
+@prefix sequences_and_intervals---energy_manager_component: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/sequences_and_intervals---energy_manager_component#> .
+@prefix sgtqueries: <http://sgt.6/sgtqueries#> .
+@prefix sm: <http://topbraid.org/sparqlmotion#> .
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix sml: <http://topbraid.org/sparqlmotionlib#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spinmap: <http://spinrdf.org/spinmap#> .
+@prefix spinmapl: <http://topbraid.org/spin/spinmapl#> .
+@prefix spinowl: <http://topbraid.org/spin/spinowl#> .
+@prefix standard_aggregations---collections_rulesets_and_aggregations: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/standard_aggregations---collections_rulesets_and_aggregations#> .
+@prefix swa: <http://topbraid.org/swa#> .
+@prefix swe---wxxm: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/swe---wxxm#> .
+@prefix tables: <http://topbraid.org/tables#> .
+@prefix time---common_primitive_types_classes_and_enumerations: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/time---common_primitive_types_classes_and_enumerations#> .
+@prefix tweaks: <http://sgt.6/tweaks#> .
+@prefix uml: <http://schema.omg.org/spec/UML/2.1/uml.xml#> .
+@prefix under_consideration---common_primitive_types_classes_and_enumerations: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/under_consideration---common_primitive_types_classes_and_enumerations#> .
+@prefix wscalendarpim---oasis: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wscalendarpim---oasis#> .
+@prefix wx---wxxm: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx---wxxm#> .
+@prefix wx_base---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_base---wx#> .
+@prefix wx_cloud---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_cloud---wx#> .
+@prefix wx_coverage---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_coverage---wx#> .
+@prefix wx_datatypes---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_datatypes---wx#> .
+@prefix wx_features---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_features---wx#> .
+@prefix wx_forecast---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_forecast---wx#> .
+@prefix wx_measures---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_measures---wx#> .
+@prefix wx_motionvector---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_motionvector---wx#> .
+@prefix wx_observation---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_observation---wx#> .
+@prefix wx_phenombase---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_phenombase---wx#> .
+@prefix wx_process---wx: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wx_process---wx#> .
+@prefix wxxm---model_elements_from_external_sources: <http://uml.linkedmodels.org/sg/schema/fsgim.release1/submodels/wxxm---model_elements_from_external_sources#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://input.1/buildReferenceSet>
+  rdf:type owl:Ontology ;
+  owl:imports <http://sgt.6/rules> ;
+  owl:imports <http://topbraid.org/sparqlmotionfunctions> ;
+  owl:imports <http://topbraid.org/sparqlmotionlib-tbc> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+ref:Add_SPL_Import
+  rdf:type sml:ApplyConstruct ;
+  sm:next ref:ExportToRDFFile_1 ;
+  sml:constructQuery [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://spinrdf.org/spl> ;
+            sp:predicate owl:imports ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "http://input.1/outputs/{?outputFile}" ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  sml:replace "false"^^xsd:boolean ;
+.
+ref:ApplyTopSPIN
+  rdf:type sml:ApplyTopSPIN ;
+  sm:next <http://input.1/buildReferenceSet#ExportTordfCircuitData.ttl> ;
+  sm:next ref:Merge_1 ;
+  sm:next ref:Merge_2 ;
+  sm:next ref:Merge_3 ;
+  sml:flatten "false"^^xsd:boolean ;
+  sml:predicate spin:rule ;
+  sml:replace "true"^^xsd:boolean ;
+  sml:singlePass "true"^^xsd:boolean ;
+.
+ref:ApplyTopSPINBuildFSGIMModel
+  rdf:type sml:ApplyTopSPIN ;
+  sm:next <http://input.1/buildReferenceSet#ExportToinferences.ttl> ;
+  sm:next ref:Merge_2 ;
+  sm:next ref:Merge_3 ;
+  sml:flatten "false"^^xsd:boolean ;
+  sml:predicate spin:rule ;
+  sml:replace "true"^^xsd:boolean ;
+  sml:singlePass "false"^^xsd:boolean ;
+.
+ref:ApplyTopSPINCalculateAggregations
+  rdf:type sml:ApplyTopSPIN ;
+  sm:next ref:Merge_3 ;
+  sml:flatten "false"^^xsd:boolean ;
+  sml:predicate spin:rule ;
+  sml:replace "true"^^xsd:boolean ;
+  sml:singlePass "false"^^xsd:boolean ;
+.
+ref:ApplyTopSPINPower
+  rdf:type sml:ApplyTopSPIN ;
+  sm:next <http://input.1/buildReferenceSet#ExportTordfPowerData.ttl> ;
+  sm:next ref:Merge_1 ;
+  sm:next ref:Merge_2 ;
+  sm:next ref:Merge_3 ;
+  sml:flatten "false"^^xsd:boolean ;
+  sml:predicate spin:rule ;
+  sml:replace "true"^^xsd:boolean ;
+  sml:singlePass "true"^^xsd:boolean ;
+.
+ref:CopyCircuitFile
+  rdf:type sml:CopyFile ;
+  sm:next <http://input.1/buildReferenceSet#Import-MapCircuitToFSGIM.ttl_1> ;
+  sml:newFilePath "/input.1/CircuitData.xlsx"^^xsd:string ;
+  sml:oldFilePath "{?circuitFile}"^^xsd:string ;
+.
+ref:CopyPowerFile
+  rdf:type sml:CopyFile ;
+  sm:next <http://input.1/buildReferenceSet#Import-MapPowerToFSGIM.ttl_1> ;
+  sml:newFilePath "/input.1/PowerData.xlsx"^^xsd:string ;
+  sml:oldFilePath "{?powerFile}"^^xsd:string ;
+.
+ref:EnterCircuitData
+  rdf:type sml:EnterLiteral ;
+  sm:next ref:CopyCircuitFile ;
+  sm:outputVariable "circuitFile"^^xsd:string ;
+  sml:datatype xsd:string ;
+  sml:text "Enter Circuit data spreadsheet file path"^^xsd:string ;
+.
+ref:EnterOutputFile
+  rdf:type sml:EnterLiteral ;
+  sm:next ref:CopyPowerFile ;
+  sm:outputVariable "outputFile"^^xsd:string ;
+  sml:datatype xsd:string ;
+  sml:text "Enter output filename without extension"^^xsd:string ;
+.
+ref:EnterPowerData
+  rdf:type sml:EnterLiteral ;
+  sm:next ref:EnterOutputFile ;
+  sm:outputVariable "powerFile"^^xsd:string ;
+  sml:datatype xsd:string ;
+  sml:text "Enter Power data spreadsheet file path"^^xsd:string ;
+.
+ref:ExportToRDFFile_1
+  rdf:type sml:ExportToRDFFile ;
+  sml:baseURI "http://input.1/outputs/{?outputFile}"^^xsd:string ;
+  sml:targetFilePath "/input.1/outputs/{?outputFile}.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#ExportToinferences.ttl>
+  rdf:type sml:ExportToRDFFile ;
+  sm:next ref:Merge_2 ;
+  sml:baseURI "http://sgt.6/inferences"^^xsd:string ;
+  sml:targetFilePath "/sgt.6/inferences.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#ExportTordfCircuitData.ttl>
+  rdf:type sml:ExportToRDFFile ;
+  sm:next ref:EnterPowerData ;
+  sml:baseURI "http://input.1/rdfCircuitData"^^xsd:string ;
+  sml:targetFilePath "rdfCircuitData.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#ExportTordfPowerData.ttl>
+  rdf:type sml:ExportToRDFFile ;
+  sm:next ref:Merge_1 ;
+  sml:baseURI "http://input.1/rdfPowerData"^^xsd:string ;
+  sml:targetFilePath "rdfPowerData.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-MapCircuitToFSGIM.ttl_1>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:ApplyTopSPIN ;
+  sml:baseURI "http://input.1/MapCircuitToFSGIM"^^xsd:string ;
+  rdfs:label "Import MapCircuitToFSGIM.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-MapPowerToFSGIM.ttl_1>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:ApplyTopSPINPower ;
+  sml:baseURI "http://input.1/MapPowerToFSGIM"^^xsd:string ;
+  rdfs:label "Import MapPowerToFSGIM.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-aggregations.ttl_1>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_2 ;
+  sml:baseURI "http://sgt.6/aggregations"^^xsd:string ;
+  rdfs:label "Import aggregations.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-aggregations.ttl_2>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_4 ;
+  sml:baseURI "http://sgt.6/aggregations"^^xsd:string ;
+  sml:ignoreImports "true"^^xsd:boolean ;
+  rdfs:label "Import aggregations.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-component-collection-all.ttl_2>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_4 ;
+  sml:baseURI "http://sgt.6/20160614/component-collection-all"^^xsd:string ;
+  sml:ignoreImports "true"^^xsd:boolean ;
+  rdfs:label "Import component-collection-all.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-defaults.ttl_1>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_4 ;
+  sm:nodeX 1059 ;
+  sm:nodeY 1138 ;
+  sml:baseURI "http://sgt.6/defaults"^^xsd:string ;
+  sml:ignoreImports "true"^^xsd:boolean ;
+  rdfs:label "Import defaults.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-explanations.ttl_1>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_4 ;
+  sml:baseURI "http://sgt.6/explanations"^^xsd:string ;
+  sml:ignoreImports "true"^^xsd:boolean ;
+  rdfs:label "Import explanations.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-initializer.ttl_1>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_4 ;
+  sml:baseURI "http://sgt.6/initializer"^^xsd:string ;
+  sml:ignoreImports "true"^^xsd:boolean ;
+  rdfs:label "Import initializer.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-rules.ttl_1>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_4 ;
+  sml:baseURI "http://sgt.6/rules"^^xsd:string ;
+  sml:ignoreImports "true"^^xsd:boolean ;
+  rdfs:label "Import rules.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-sandbox.ttl_1>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_1 ;
+  sm:next ref:Merge_2 ;
+  sml:baseURI "http://sgt.6/sandbox"^^xsd:string ;
+  rdfs:label "Import sandbox.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-sgtqueries.ttl_2>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_4 ;
+  sml:baseURI "http://sgt.6/sgtqueries"^^xsd:string ;
+  sml:ignoreImports "true"^^xsd:boolean ;
+  rdfs:label "Import sgtqueries.ttl"^^xsd:string ;
+.
+<http://input.1/buildReferenceSet#Import-tweaks.ttl_1>
+  rdf:type sml:ImportRDFFromWorkspace ;
+  sm:next ref:Merge_4 ;
+  sml:baseURI "http://sgt.6/tweaks"^^xsd:string ;
+  sml:ignoreImports "true"^^xsd:boolean ;
+  rdfs:label "Import tweaks.ttl"^^xsd:string ;
+.
+ref:Merge_1
+  rdf:type sml:Merge ;
+  sm:next ref:ApplyTopSPINBuildFSGIMModel ;
+.
+ref:Merge_2
+  rdf:type sml:Merge ;
+  sm:next ref:ApplyTopSPINCalculateAggregations ;
+.
+ref:Merge_3
+  rdf:type sml:Merge ;
+  sm:next ref:Add_SPL_Import ;
+.
+ref:Merge_4
+  rdf:type sml:Merge ;
+  sm:next ref:RemoveRedundantOntologyDeclarations ;
+.
+ref:RemoveRedundantOntologyDeclarations
+  rdf:type sml:FilterByConstruct ;
+  sm:next ref:Merge_3 ;
+  sml:constructQuery [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object owl:Ontology ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object owl:Ontology ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+.

@@ -1,0 +1,225 @@
+# baseURI: http://sgt.6/explanations
+# imports: http://sgt.6/20160614/component-collection-all
+# imports: http://spinrdf.org/spl
+# prefix: explain
+
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix explain: <http://sgt.6/explanations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://sgt.6/explanations>
+  rdf:type owl:Ontology ;
+  owl:imports <http://sgt.6/20160614/component-collection-all> ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+explain:AggregateDemand
+  rdf:type owl:Class ;
+  rdfs:label "AggregateDemand"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/collections_rulesets_and_aggregations---energy_manager_component#AllResourcesInEMDomain> ;
+      owl:onProperty explain:hasCollection ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#EMPresentData> ;
+      owl:onProperty explain:hasEMPresentData ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/load_component---device_and_model_components#Load> ;
+      owl:onProperty explain:hasLoads ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#Circuit> ;
+      owl:onProperty explain:hasCircuit ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom xsd:float ;
+      owl:onProperty explain:hasComputedRealDemandAggregation ;
+    ] ;
+.
+explain:AggregateEMDemand
+  rdf:type owl:Class ;
+  rdfs:label "AggregateEMDemand"^^xsd:string ;
+  rdfs:subClassOf explain:AggregateDemand ;
+.
+explain:AggregateLoadDemand
+  rdf:type owl:Class ;
+  rdfs:label "AggregateLoadDemand"^^xsd:string ;
+  rdfs:subClassOf explain:AggregateDemand ;
+.
+explain:AggregateMeterDemand
+  rdf:type owl:Class ;
+  rdfs:label "AggregateMeterDemand"^^xsd:string ;
+  rdfs:subClassOf explain:AggregateDemand ;
+.
+explain:AggregateRouterDemand
+  rdf:type owl:Class ;
+  rdfs:label "AggregateRouterDemand"^^xsd:string ;
+  rdfs:subClassOf explain:AggregateDemand ;
+.
+explain:Dashboard
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty explain:testCaseName ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty explain:testCaseVersion ;
+    ] ;
+.
+explain:createdBy
+  rdf:type owl:ObjectProperty ;
+.
+explain:feedsCircuit
+  rdf:type owl:AsymmetricProperty ;
+  rdfs:comment "This property links a Circuit with any \"downstream\" Circuit that it directly provides power to."^^xsd:string ;
+  owl:inverseOf explain:isFedByCircuit ;
+.
+explain:feedsOrIsAlternateTo
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "This property links a Circuit to another Circuit that is either \"downstream\" getting power from this Circuit, or another Circuit that is an alternate power feeder Circuit (as with ElectricRouters)."^^xsd:string ;
+.
+explain:hasAggregateLoadReactiveDemand
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateLoadReactiveDemandUncertainty
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateLoadRealDemand
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateLoadRealDemandUncertainty
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateMeterReactiveDemand
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateMeterReactiveDemandUncertainty
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateMeterRealDemand
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateMeterRealDemandUncertainty
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateRouterReactiveDemand
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateRouterReactiveDemandUncertainty
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateRouterRealDemand
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateRouterRealDemandUncertainty
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateSubEMReactiveDemand
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateSubEMReactiveDemandUncertainty
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateSubEMRealDemand
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasAggregateSubEMRealDemandUncertainty
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasCircuit
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasCollection
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasComputedApparentDemandAggregation
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasComputedApparentDemandUncertaintyAggregation
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasComputedReactiveDemandAggregation
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasComputedReactiveDemandUncertaintyAggregation
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasComputedRealDemandAggregation
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasComputedRealDemandUncertaintyAggregation
+  rdf:type owl:DatatypeProperty ;
+.
+explain:hasContributingDemandAggregations
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasEMPresentData
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasEMs
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasEMsContributingToThisCircuit
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasGenerators
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasLoads
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasMeters
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasRouters
+  rdf:type owl:ObjectProperty ;
+.
+explain:hasSupportingAggregations
+  rdf:type owl:ObjectProperty ;
+.
+explain:isFedByCircuit
+  rdf:type owl:AsymmetricProperty ;
+  rdfs:comment "This property links a Circuit with the \"upstream\" Circuits(s) that supply it with power."^^xsd:string ;
+  owl:inverseOf explain:feedsCircuit ;
+.
+explain:measuresDemand
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/meter_component---device_and_model_components#ElectricMeter> ;
+  rdfs:range <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/primitive_data_types---common_primitive_types_classes_and_enumerations#Boolean> ;
+.
+explain:metersCircuit
+  rdf:type owl:ObjectProperty ;
+.
+explain:metersPowerOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "This property is used to associate a Meter with all the Loads and Generators it is upstream of, and thus is metering the power consumed or generated by."^^xsd:string ;
+  rdfs:domain <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/meter_component---device_and_model_components#ElectricMeter> ;
+.
+explain:supportsComponentElement
+  rdf:type owl:ObjectProperty ;
+  rdfs:range <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#ComponentElement> ;
+.
+explain:testCaseName
+  rdf:type owl:DatatypeProperty ;
+  rdfs:range xsd:string ;
+.
+explain:testCaseVersion
+  rdf:type owl:DatatypeProperty ;
+  rdfs:range xsd:decimal ;
+.

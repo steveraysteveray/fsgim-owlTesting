@@ -1,0 +1,3275 @@
+# baseURI: http://sgt.6/aggregations
+# imports: http://sgt.6/20160614/component-collection-all
+# imports: http://sgt.6/initializer
+# imports: http://spinrdf.org/spl
+# prefix: aggregations
+
+@prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix aggregations: <http://sgt.6/aggregations#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rules: <http://sgt.6/rules#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://sgt.6/aggregations>
+  rdf:type owl:Ontology ;
+  owl:imports <http://sgt.6/20160614/component-collection-all> ;
+  owl:imports <http://sgt.6/initializer> ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+<http://sgt.6/explanations#AggregateDemand>
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "apparent"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedApparentDemandAggregation> ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "val"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://sgt.6/explanations#hasComputedApparentDemandAggregation> ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            sp:object [
+                sp:varName "real"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "reac"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:sqrt ;
+                sp:arg1 [
+                    rdf:type sp:add ;
+                    sp:arg1 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            sp:varName "real"^^xsd:string ;
+                          ] ;
+                        sp:arg2 [
+                            sp:varName "real"^^xsd:string ;
+                          ] ;
+                      ] ;
+                    sp:arg2 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            sp:varName "reac"^^xsd:string ;
+                          ] ;
+                        sp:arg2 [
+                            sp:varName "reac"^^xsd:string ;
+                          ] ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "apparent"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "001 Calculate apparent power once the real and reactive power exists"^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "apparent"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedApparentDemandUncertaintyAggregation> ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "val"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://sgt.6/explanations#hasComputedApparentDemandUncertaintyAggregation> ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            sp:object [
+                sp:varName "real"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "reac"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:sqrt ;
+                sp:arg1 [
+                    rdf:type sp:add ;
+                    sp:arg1 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            sp:varName "real"^^xsd:string ;
+                          ] ;
+                        sp:arg2 [
+                            sp:varName "real"^^xsd:string ;
+                          ] ;
+                      ] ;
+                    sp:arg2 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            sp:varName "reac"^^xsd:string ;
+                          ] ;
+                        sp:arg2 [
+                            sp:varName "reac"^^xsd:string ;
+                          ] ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "apparent"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "002 Calculate apparent power uncertainty once the real and reactive power uncertainties exist"^^xsd:string ;
+    ] ;
+.
+<http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#PowerApparentQuantity>
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "apparent"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasUncertainty> ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "val"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasUncertainty> ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#hasQuantityApparentPowerRef> ;
+            sp:subject [
+                sp:varName "pms"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "real"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#hasQuantityRealPowerRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasUncertainty> ;
+              ] ;
+            sp:subject [
+                sp:varName "pms"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "reac"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#hasQuantityReactivePowerRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasUncertainty> ;
+              ] ;
+            sp:subject [
+                sp:varName "pms"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:sqrt ;
+                sp:arg1 [
+                    rdf:type sp:add ;
+                    sp:arg1 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            sp:varName "real"^^xsd:string ;
+                          ] ;
+                        sp:arg2 [
+                            sp:varName "real"^^xsd:string ;
+                          ] ;
+                      ] ;
+                    sp:arg2 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            sp:varName "reac"^^xsd:string ;
+                          ] ;
+                        sp:arg2 [
+                            sp:varName "reac"^^xsd:string ;
+                          ] ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "apparent"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "002 Calculate apparent power uncertainty once the real and reactive power uncertainties exist"^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "apparent"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasValue> ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "val"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasValue> ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#hasQuantityApparentPowerRef> ;
+            sp:subject [
+                sp:varName "pms"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "real"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#hasQuantityRealPowerRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasValue> ;
+              ] ;
+            sp:subject [
+                sp:varName "pms"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "reac"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#hasQuantityReactivePowerRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasValue> ;
+              ] ;
+            sp:subject [
+                sp:varName "pms"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:sqrt ;
+                sp:arg1 [
+                    rdf:type sp:add ;
+                    sp:arg1 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            sp:varName "real"^^xsd:string ;
+                          ] ;
+                        sp:arg2 [
+                            sp:varName "real"^^xsd:string ;
+                          ] ;
+                      ] ;
+                    sp:arg2 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            sp:varName "reac"^^xsd:string ;
+                          ] ;
+                        sp:arg2 [
+                            sp:varName "reac"^^xsd:string ;
+                          ] ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "apparent"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "001 Calculate apparent power once the real and reactive power exists"^^xsd:string ;
+    ] ;
+.
+<http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/standard_aggregations---collections_rulesets_and_aggregations#DemandAggregation>
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://sgt.6/explanations#AggregateDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "subEM"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMsContributingToThisCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "da"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasContributingDemandAggregations> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "meter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasMeters> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "load"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasLoads> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "gen"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasGenerators> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "router"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasRouters> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggLoad"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateLoadRealDemand> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggMeter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateMeterRealDemand> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRouter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateRouterRealDemand> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggEM"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateSubEMRealDemand> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRLoad"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateLoadReactiveDemand> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRMeter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateMeterReactiveDemand> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRRouter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateRouterReactiveDemand> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggREM"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateSubEMReactiveDemand> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggLoadU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateLoadRealDemandUncertainty> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggMeterU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateMeterRealDemandUncertainty> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRouterU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateRouterRealDemandUncertainty> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggEMU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateSubEMRealDemandUncertainty> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRLoadU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateLoadReactiveDemandUncertainty> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRMeterU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateMeterReactiveDemandUncertainty> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRRouterU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateRouterReactiveDemandUncertainty> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggREMU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasAggregateSubEMReactiveDemandUncertainty> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ald"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasSupportingAggregations> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "amd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasSupportingAggregations> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ard"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasSupportingAggregations> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aemd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasSupportingAggregations> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregateU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregateU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasValue> ;
+            sp:subject [
+                sp:varName "qrp"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregateU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasUncertainty> ;
+            sp:subject [
+                sp:varName "qrp"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasValue> ;
+            sp:subject [
+                sp:varName "qreacp"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregateU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/measurements---common_primitive_types_classes_and_enumerations#hasUncertainty> ;
+            sp:subject [
+                sp:varName "qreacp"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:subEMAggregationReady ;
+                sp:arg1 [
+                    sp:varName "em"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentAggregateDemandRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasAggregationMetadataRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#hasCircuitOfAggregationRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "subEM"^^xsd:string ;
+                    ] ;
+                  sp:predicate rules:getEMsManagingCircuit ;
+                  sp:subject [
+                      sp:varName "circuit"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "subEM"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasEMsRef> ;
+                  sp:subject [
+                      sp:varName "em"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "meter"^^xsd:string ;
+                    ] ;
+                  sp:predicate rules:getMetersContributingToCircuit ;
+                  sp:subject [
+                      sp:varName "circuit"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "meter"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasMetersRef> ;
+                  sp:subject [
+                      sp:varName "em"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "load"^^xsd:string ;
+                    ] ;
+                  sp:predicate rules:getLoadsContributingToCircuit ;
+                  sp:subject [
+                      sp:varName "circuit"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "load"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasLoadsRef> ;
+                  sp:subject [
+                      sp:varName "em"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "router"^^xsd:string ;
+                    ] ;
+                  sp:predicate rules:getRoutersContributingToCircuit ;
+                  sp:subject [
+                      sp:varName "circuit"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "router"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasEnergyRouterRef> ;
+                  sp:subject [
+                      sp:varName "em"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "circuit"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+                  sp:subject [
+                      sp:varName "da"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "empd"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+                  sp:subject [
+                      sp:varName "da"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            sp:object <http://sgt.6/explanations#AggregateLoadDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ald"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "ald"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggLoad"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "ald"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRLoad"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "ald"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggLoadU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "ald"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRLoadU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "ald"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://sgt.6/explanations#AggregateMeterDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "amd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "amd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggMeter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "amd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRMeter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "amd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggMeterU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "amd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRMeterU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "amd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://sgt.6/explanations#AggregateRouterDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ard"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "ard"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRouter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "ard"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRRouter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "ard"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRouterU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "ard"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggRRouterU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "ard"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://sgt.6/explanations#AggregateEMDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "aemd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "aemd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggEM"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "aemd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggREM"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "aemd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggEMU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "aemd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aggREMU"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "aemd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:calculateAggregateRealDemand ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:calculateAggregateReactiveDemand ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:calculateAggregateRealDemandUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregateU"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:calculateAggregateReactiveDemandUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregateU"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#AggregateDemand" ;
+                sp:arg2 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "em"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "circuit"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newName"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://sgt.6/explanations#AggregateDemand> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "newURI"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "qrp"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/standard_aggregations---collections_rulesets_and_aggregations#hasAggregateQuantityRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#hasQuantityRealPowerRef> ;
+              ] ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "qreacp"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/standard_aggregations---collections_rulesets_and_aggregations#hasAggregateQuantityRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/power_measurements---measurements#hasQuantityReactivePowerRef> ;
+              ] ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      rdfs:comment "009 Calculate total aggregation. Still need to ensure the four component aggregations have been calculated."^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://sgt.6/explanations#AggregateEMDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "allSubEMs"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMs> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "subEM"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMsContributingToThisCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregateUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregateUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:subEMAggregationReady ;
+                sp:arg1 [
+                    sp:varName "em"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "allSubEMs"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasEMsRef> ;
+            sp:subject [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentAggregateDemandRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasAggregationMetadataRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#hasCircuitOfAggregationRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "subEM"^^xsd:string ;
+              ] ;
+            sp:predicate rules:getEMsManagingCircuit ;
+            sp:subject [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "subEM"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasEMsRef> ;
+            sp:subject [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateRealSubEMs ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateRealSubEMUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregateUncertainty"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateReactiveSubEMs ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateReactiveSubEMUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregateUncertainty"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#DemandFromSubEMs" ;
+                sp:arg2 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "em"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "circuit"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newName"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://sgt.6/explanations#AggregateDemand> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "newURI"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "007 Calculate Demand aggregation of subordinate EMs"^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://sgt.6/explanations#AggregateEMDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:subEMAggregationReady ;
+                sp:arg1 [
+                    sp:varName "em"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentAggregateDemandRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasAggregationMetadataRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#hasCircuitOfAggregationRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "subEM"^^xsd:string ;
+                    ] ;
+                  sp:predicate rules:getEMsManagingCircuit ;
+                  sp:subject [
+                      sp:varName "circuit"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "subEM"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasEMsRef> ;
+                  sp:subject [
+                      sp:varName "em"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "subEM"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#DemandFromSubEMs" ;
+                sp:arg2 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "em"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "circuit"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newName"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://sgt.6/explanations#AggregateDemand> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "newURI"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "008 Set Demand aggregation of subordinate EMs to zero if there are no subordinate EMs"^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://sgt.6/explanations#AggregateLoadDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "componentElement"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCollection> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "componentElement"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:subEMAggregationReady ;
+                sp:arg1 [
+                    sp:varName "componentElement"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentAggregateDemandRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasAggregationMetadataRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#hasCircuitOfAggregationRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "load"^^xsd:string ;
+                    ] ;
+                  sp:predicate rules:getLoadsContributingToCircuit ;
+                  sp:subject [
+                      sp:varName "circuit"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  rdf:type sp:TriplePath ;
+                  sp:object [
+                      sp:varName "load"^^xsd:string ;
+                    ] ;
+                  sp:path [
+                      rdf:type sp:SeqPath ;
+                      sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+                      sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#hasPartRef> ;
+                    ] ;
+                  sp:subject [
+                      sp:varName "empd"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "load"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#DemandFromLoads" ;
+                sp:arg2 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "componentElement"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "circuit"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newName"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://sgt.6/explanations#AggregateDemand> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "newURI"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "002 Set Load Demand Aggregation to zero if there are no loads for this Demand Aggregation"^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://sgt.6/explanations#AggregateLoadDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCollection> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "load"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasLoads> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregateUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregateUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:subEMAggregationReady ;
+                sp:arg1 [
+                    sp:varName "em"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentAggregateDemandRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasAggregationMetadataRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#hasCircuitOfAggregationRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "load"^^xsd:string ;
+              ] ;
+            sp:predicate rules:getLoadsContributingToCircuit ;
+            sp:subject [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "load"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#hasPartRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateRealLoads ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateRealLoadUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregateUncertainty"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateReactiveLoads ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateReactiveLoadUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregateUncertainty"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#DemandFromLoads" ;
+                sp:arg2 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "em"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "circuit"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newName"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://sgt.6/explanations#AggregateDemand> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "newURI"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "001 Calculate Load Demand Aggregation"^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://sgt.6/explanations#AggregateMeterDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCollection> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:subEMAggregationReady ;
+                sp:arg1 [
+                    sp:varName "em"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentAggregateDemandRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasAggregationMetadataRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#hasCircuitOfAggregationRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "meter"^^xsd:string ;
+                    ] ;
+                  sp:predicate rules:getMetersContributingToCircuit ;
+                  sp:subject [
+                      sp:varName "circuit"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  rdf:type sp:TriplePath ;
+                  sp:object [
+                      sp:varName "meter"^^xsd:string ;
+                    ] ;
+                  sp:path [
+                      rdf:type sp:SeqPath ;
+                      sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+                      sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#hasPartRef> ;
+                    ] ;
+                  sp:subject [
+                      sp:varName "empd"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "meter"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#DemandFromMeters" ;
+                sp:arg2 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "em"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "circuit"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newName"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://sgt.6/explanations#AggregateDemand> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "newURI"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "004 Set Metered Demand Aggregation to zero if there are no meters for this Demand Aggregation Circuit"^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://sgt.6/explanations#AggregateMeterDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCollection> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "meter"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasMeters> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregateUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregateUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:subEMAggregationReady ;
+                sp:arg1 [
+                    sp:varName "em"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentAggregateDemandRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasAggregationMetadataRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#hasCircuitOfAggregationRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "meter"^^xsd:string ;
+              ] ;
+            sp:predicate rules:getMetersContributingToCircuit ;
+            sp:subject [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "meter"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/device---device_and_model_components#hasPartRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuitBeyondMeter"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/meter_component---device_and_model_components#hasOutputRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/other_common_classes---common_primitive_types_classes_and_enumerations#hasConnectedToRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "meter"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateRealMeters ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateRealMeterUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregateUncertainty"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateReactiveMeters ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateReactiveMeterUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregateUncertainty"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#DemandFromMeters" ;
+                sp:arg2 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "em"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "circuit"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newName"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://sgt.6/explanations#AggregateDemand> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "newURI"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "003 Calculate Metered Demand Aggregation"^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://sgt.6/explanations#AggregateRouterDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCollection> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "router"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasRouters> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object 0.0 ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:subEMAggregationReady ;
+                sp:arg1 [
+                    sp:varName "em"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentAggregateDemandRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasAggregationMetadataRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#hasCircuitOfAggregationRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "router"^^xsd:string ;
+                    ] ;
+                  sp:predicate rules:getRoutersContributingToCircuit ;
+                  sp:subject [
+                      sp:varName "circuit"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "router"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasEnergyRouterRef> ;
+                  sp:subject [
+                      sp:varName "em"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "router"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#DemandFromRouters" ;
+                sp:arg2 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "em"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "circuit"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newName"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://sgt.6/explanations#AggregateDemand> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "newURI"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "006 Set Router aggregation to zero if there are no Routers"^^xsd:string ;
+    ] ;
+  spin:ruleWave2 [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://sgt.6/explanations#AggregateRouterDemand> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#createdBy> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasEMPresentData> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCollection> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasCircuit> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "router"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasRouters> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "realAggregateUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedRealDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "reactiveAggregateUncertainty"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#hasComputedReactiveDemandUncertaintyAggregation> ;
+            sp:subject [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "owningClass"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+            sp:predicate <http://sgt.6/explanations#supportsComponentElement> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:subEMAggregationReady ;
+                sp:arg1 [
+                    sp:varName "em"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentAggregateDemandRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "collection"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasPresentResourcesRef> ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:TriplePath ;
+            sp:object [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+            sp:path [
+                rdf:type sp:SeqPath ;
+                sp:path1 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasAggregationMetadataRef> ;
+                sp:path2 <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/key_energy_manager_concepts---energy_manager_component#hasCircuitOfAggregationRef> ;
+              ] ;
+            sp:subject [
+                sp:varName "empd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "router"^^xsd:string ;
+              ] ;
+            sp:predicate rules:getRoutersContributingToCircuit ;
+            sp:subject [
+                sp:varName "circuit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "router"^^xsd:string ;
+              ] ;
+            sp:predicate <http://uml.linkedmodels.org/sg/schema/fsgim.rofficial/submodels/energy_manager_component---device_and_model_components#hasEnergyRouterRef> ;
+            sp:subject [
+                sp:varName "em"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type rules:haveICalculatedSubCircuitAggregationsForThisRouter ;
+                sp:arg1 [
+                    sp:varName "em"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "router"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateRealRouters ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateRealRouterUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "realAggregateUncertainty"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateReactiveRouters ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type rules:aggregateReactiveRouterUncertainty ;
+                sp:arg1 [
+                    sp:varName "circuit"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "empd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "reactiveAggregateUncertainty"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:concat ;
+                sp:arg1 "http://sgt.6/20160614#DemandFromRouters" ;
+                sp:arg2 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "em"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type afn:localname ;
+                    sp:arg1 [
+                        sp:varName "circuit"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newName"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:buildURI ;
+                sp:arg1 [
+                    sp:varName "newName"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newURI"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://sgt.6/explanations#AggregateDemand> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "newURI"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "005 Calculate Router contributions to the aggregation"^^xsd:string ;
+    ] ;
+.
