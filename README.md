@@ -5,3 +5,5 @@ This repository contains two "projects" as defined in the development environmen
 
 Documentation giving more details is forthcoming.
 
+The work to create this project was kindly supported by NIST Grant 60NANB15D315.
+
